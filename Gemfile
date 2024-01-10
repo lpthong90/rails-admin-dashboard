@@ -85,3 +85,4 @@ group :rubocop do
 end
 
 gem "devise", "~> 4.9"
+gem "omniauth-github", "~> 2.0.0"
