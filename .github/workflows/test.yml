@@ -20,5 +20,8 @@ jobs:
         ruby-version: 3.3
         bundler-cache: true
 
+    - name: Bundle install gemfile 
+      run: bundle install
+
     - name: Run Test
-      run: rails test
+      run: bundle exec rake
