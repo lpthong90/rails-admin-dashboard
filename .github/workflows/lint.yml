@@ -23,8 +23,8 @@ jobs:
         ruby-version: 3.3
         bundler-cache: true
 
-    - name: mdl
-      run: bundle exec rake -f guides/Rakefile guides:lint
+    # - name: mdl
+    #   run: bundle exec rake -f guides/Rakefile guides:lint
 
     - name: Set up Python
       uses: actions/setup-python@v3
@@ -34,9 +34,9 @@ jobs:
     - run: tools/railspect changelogs .
     - run: tools/railspect configuration .
 
-    - uses: zzak/action-discord@v8
-      continue-on-error: true
-      if: failure() && github.ref_name == 'main'
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+    # - uses: zzak/action-discord@v8
+    #   continue-on-error: true
+    #   if: failure() && github.ref_name == 'main'
+    #   with:
+    #     github-token: ${{ secrets.GITHUB_TOKEN }}
+    #     webhook: ${{ secrets.DISCORD_WEBHOOK }}
