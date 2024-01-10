@@ -47,7 +47,7 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
-  gem 'bullet'
+  gem "bullet"
 end
 
 group :development do
@@ -65,7 +65,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem 'simplecov', require: false
+  gem "simplecov", require: false
 end
 
 group :lint do
@@ -85,5 +85,5 @@ group :rubocop do
 end
 
 gem "devise", "~> 4.9"
-
+gem "omniauth-github", "~> 2.0.0"
 gem "tailwindcss-rails", "~> 2.2"
