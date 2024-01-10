@@ -20,11 +20,11 @@ jobs:
         ruby-version: 3.3
         bundler-cache: true
 
-    - name: Install rake gem
-      run: bundle add rake
-
     - name: Bundle install gemfile 
       run: bundle install
+
+    - name: Install rake gem
+      run: bundle add rake
 
     - name: Run Test
       run: rake
