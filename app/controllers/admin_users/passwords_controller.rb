@@ -17,9 +17,11 @@ class AdminUsers::PasswordsController < Devise::PasswordsController
   # end
 
   # PUT /resource/password
-  # def update
-  #   super
-  # end
+  def update
+    p "admin_user's params", resource_params
+    p "admin_user's reset_password_token", resource_params[:reset_password_token]
+    super
+  end
 
   # protected
 

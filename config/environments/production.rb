@@ -77,6 +77,14 @@ Rails.application.configure do
 
   # TODO
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  config.action_mailer.smtp_settings = {
+    address: ENV.fetch("SMTP_SEVER_ADDRESS", "smtp.mailgun.org"),
+    port: ENV.fetch("SMTP_PORT", 587),
+    enable_starttls_auto: true, # detects and uses STARTTLS
+    user_name: ENV.fetch("SMTP_USER", "smtp_master@email.com"),
+    password: ENV.fetch("SMTP_PASSWORD", "password"),
+    authentication: ENV.fetch("SMTP_AUTHENTICATION", "login")
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
