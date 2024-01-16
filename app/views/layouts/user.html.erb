@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
   <head>
-    <title>Dashboard</title>
+    <title>User Dashboard</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,9 +13,24 @@
   </head>
 
   <body class="bg-gray-50 dark:bg-gray-800">
-    <main>
-      <%= yield %>
-    </main>
+    <% if current_user.present? %> 
+      <%= render "/user/partials/nav" %>
+      <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+        <%= render "/user/partials/sidebar" %>
+        <div class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90" id="sidebarBackdrop"></div>
+
+        <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+          <main>
+            <%= yield %>
+          </main>
+          <%= render "/user/partials/footer" %>
+        </div>
+      </div>
+    <% else %>
+      <main>
+        <%= yield %>
+      </main>
+    <% end %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   </body>
 </html>

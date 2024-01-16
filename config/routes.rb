@@ -8,6 +8,13 @@ Rails.application.routes.draw do
     get "dashboard/categories"
     get "dashboard/bills"
   end
+
+  namespace :user do
+    get 'dashboard/index'
+    get 'dashboard/api_keys'
+  end
+
+  root "home#index"
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -18,8 +25,15 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  devise_for :admin_users, path: "auth", controllers: {
+  devise_for :admin_users, path: "admin", controllers: {
     sessions: "admin_users/sessions",
-    passwords: "admin_users/passwords"
+    passwords: "admin_users/passwords",
+    registrations: "admin_users/registrations",
+  }
+
+  devise_for :users, path: "user", controllers: {
+    sessions: "users/sessions",
+    passwords: "users/passwords",
+    registrations: "users/registrations",
   }
 end
