@@ -8,12 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" />
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "flowbite-app", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body class="bg-gray-50 dark:bg-gray-800">
     <main class="bg-gray-50 dark:bg-gray-900">
-      <%= yield %>
+      <%= render "/layouts/partials/nav" %>
+      <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+        <%= render "/layouts/partials/sidebar" %>
+        <div class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90" id="sidebarBackdrop"></div>
+
+        <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+          <main>
+            <%= yield %>
+          </main>
+          <%= render "/layouts/partials/footer" %>
+        </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   </body>
