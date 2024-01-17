@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :api_keys, only: [:index, :new, :create, :show, :destroy]
   namespace :admin do
     get "dashboard/index"
     get "dashboard/users"

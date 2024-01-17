@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_16_145300) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_17_174231) do
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -21,6 +21,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_145300) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "api_keys", force: :cascade do |t|
+    t.string "name"
+    t.string "public_key"
+    t.string "encrypted_secret_key"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["public_key"], name: "index_api_keys_on_public_key", unique: true
   end
 
   create_table "users", force: :cascade do |t|
