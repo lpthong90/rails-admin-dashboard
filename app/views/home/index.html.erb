@@ -1,4 +1,19 @@
-<div>
-  <h1 class="font-bold text-4xl">Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
+<div class="flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900">
+    <a href="<%= home_index_path %>" class="flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 dark:text-white">
+        <%= image_tag "logo.svg", class: "mr-4 h-11", alt: "FlowBite Logo" %>
+        <span>Flowbite</span>
+    </a>
+    <a href="<%= new_admin_user_session_path %>" class="flex flex-col  items-center justify-center w-full max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+            You are
+            <b> Admin </b>
+        </h2>
+    </a>
+    <br>
+    <a href="<%= new_user_session_path %>" class="flex flex-col  items-center justify-center w-full max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow dark:bg-gray-800 dark:hover:bg-gray-700" %>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+            You are
+            <b> User </b>
+        </h2>
+    </a>
 </div>
