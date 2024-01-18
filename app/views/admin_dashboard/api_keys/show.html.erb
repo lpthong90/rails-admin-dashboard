@@ -1,0 +1,19 @@
+<div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+  <main>
+    <div class="mx-auto md:w-2/3 w-full flex">
+      <div class="mx-auto">
+        <% if notice.present? %>
+          <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+        <% end %>
+
+        <%= render @admin_dashboard_api_key %>
+
+        <%# <%= link_to "Edit this admin_dashboard_user", edit_admin_dashboard_user_path(@admin_dashboard_user), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%# <div class="inline-block ml-2"> %>
+          <%# <%= button_to "Destroy this admin_dashboard_user", admin_dashboard_user_path(@admin_dashboard_user), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        <%# </div> %>
+        <%= link_to "Back to admin_dashboard_api_keys", admin_dashboard_api_keys_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      </div>
+    </div>
+  </main>
+</div>

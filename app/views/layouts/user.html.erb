@@ -17,19 +17,10 @@
       <%= render "/user/partials/nav" %>
       <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
         <%= render "/user/partials/sidebar" %>
-        <div class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90" id="sidebarBackdrop"></div>
-
-        <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
-          <main>
-            <%= yield %>
-          </main>
-          <%= render "/user/partials/footer" %>
-        </div>
+        <%= yield %>
       </div>
     <% else %>
-      <main>
-        <%= yield %>
-      </main>
+      <%= yield %>
     <% end %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   </body>

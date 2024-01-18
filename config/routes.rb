@@ -1,18 +1,15 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :api_keys, only: [:index, :new, :create, :show, :destroy]
-  namespace :admin do
-    get "dashboard/index"
-    get "dashboard/users"
-    get "dashboard/products"
-    get "dashboard/categories"
-    get "dashboard/bills"
+  resources :api_keys
+  namespace :admin_dashboard do
+    resources :api_keys
+    resources :users
+    get "" => "main#index", as: :main
   end
 
-  namespace :user do
-    get 'dashboard/index'
-    get 'dashboard/api_keys'
+  namespace :user_dashboard do
+    get "" => "main#index", as: :main
   end
 
   root "home#index"

@@ -1,8 +1,12 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing api key</h1>
+<div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+  <main>
+    <div class="mx-auto md:w-2/3 w-full">
+      <h1 class="font-bold text-4xl">Editing api key</h1>
 
-  <%= render "form", api_key: @api_key %>
+      <%= render "form", api_key: @api_key %>
 
-  <%= link_to "Show this api key", @api_key, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to api keys", api_keys_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Show this api key", @api_key, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Back to api keys", api_keys_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    </div>
+  </main>
 </div>

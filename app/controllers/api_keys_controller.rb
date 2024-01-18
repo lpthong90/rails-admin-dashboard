@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ApiKeysController < UsersController
-  before_action :set_api_key, only: %i[ show destroy ]
+  before_action :set_api_key, only: %i[ show destroy edit update ]
 
   # GET /api_keys or /api_keys.json
   def index
@@ -15,9 +17,9 @@ class ApiKeysController < UsersController
     @api_key = ApiKey.new
   end
 
-  # # GET /api_keys/1/edit
-  # def edit
-  # end
+  # GET /api_keys/1/edit
+  def edit
+  end
 
   # POST /api_keys or /api_keys.json
   def create
@@ -34,18 +36,18 @@ class ApiKeysController < UsersController
     end
   end
 
-  # # PATCH/PUT /api_keys/1 or /api_keys/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @api_key.update(api_key_params)
-  #       format.html { redirect_to api_key_url(@api_key), notice: "Api key was successfully updated." }
-  #       format.json { render :show, status: :ok, location: @api_key }
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
-  #       format.json { render json: @api_key.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  # PATCH/PUT /api_keys/1 or /api_keys/1.json
+  def update
+    respond_to do |format|
+      if @api_key.update(api_key_params)
+        format.html { redirect_to api_key_url(@api_key), notice: "Api key was successfully updated." }
+        format.json { render :show, status: :ok, location: @api_key }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @api_key.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /api_keys/1 or /api_keys/1.json
   def destroy

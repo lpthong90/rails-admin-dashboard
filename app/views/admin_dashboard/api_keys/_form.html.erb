@@ -1,0 +1,34 @@
+<div class="p-6 space-y-6">
+    <%= form_with(model: admin_dashboard_api_key, url: "/admin_dashboard/api_keys/#{admin_dashboard_api_key.id}", class: "contents") do |form| %>
+        <% if admin_dashboard_api_key.errors.any? %>
+            <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+              <h2><%= pluralize(admin_dashboard_api_key.errors.count, "error") %> prohibited this admin_dashboard_api_key from being saved:</h2>
+              <ul>
+                <% admin_dashboard_api_key.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+        <div class="grid grid-cols-6 gap-6">
+            <div class="col-span-6 sm:col-span-3">
+                <%= form.label :name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+                <%= form.text_field :name, class: "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500", placeholder: "My first key", required: true %>
+            </div>
+            <div class="col-span-6 sm:col-span-3">
+            </div>
+        </div> 
+      <!-- Modal footer -->
+      <div class="items-center p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
+          <%# <div class="inline"> %>
+          <%= form.submit class: "text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" %>
+          <%# </div> %>
+          <%# <button class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Add user</button> %>
+          <%= link_to "Back to api keys", admin_dashboard_api_keys_path, class: "inline-flex items-center justify-center w-1/2 px-3 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700" %>
+      </div>
+      <%# <div class="items-center p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
+          <button class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Add user</button>
+      </div> %>
+  <% end %>
+</div>

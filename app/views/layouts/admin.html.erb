@@ -14,22 +14,13 @@
 
   <body class="bg-gray-50 dark:bg-gray-800">
     <% if current_admin_user.present? %> 
-      <%= render "/admin/partials/nav" %>
+      <%= render "/admin_dashboard/partials/nav" %>
       <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
-        <%= render "/admin/partials/sidebar" %>
-        <div class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90" id="sidebarBackdrop"></div>
-
-        <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
-          <main>
-            <%= yield %>
-          </main>
-          <%= render "/admin/partials/footer" %>
-        </div>
+        <%= render "/admin_dashboard/partials/sidebar" %>
+        <%= yield %>
       </div>
     <% else %>
-      <main>
-        <%= yield %>
-      </main>
+      <%= yield %>
     <% end %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   </body>

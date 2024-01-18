@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ApiKey < ApplicationRecord
-  belongs_to :owner, foreign_key: :user_id, class_name: 'User'
+  belongs_to :owner, foreign_key: :user_id, class_name: "User"
 
   validates :name, presence: true
 

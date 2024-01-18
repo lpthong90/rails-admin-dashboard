@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApiKeysHelper
   def self.encrypt_key(raw_key)
     cryptor.encrypt_and_sign(raw_key)
@@ -8,16 +10,15 @@ module ApiKeysHelper
   end
 
   private
+    def self.cryptor
+      @cryptor ||= ActiveSupport::MessageEncryptor.new(secret, signature_secret)
+    end
 
-  def self.cryptor
-    @cryptor ||= ActiveSupport::MessageEncryptor.new(secret, signature_secret)
-  end
+    def self.secret
+      signature_secret[0..31]
+    end
 
-  def self.secret
-    signature_secret[0..31]
-  end
-
-  def self.signature_secret
-    Rails.application.credentials.secret_key_base
-  end
+    def self.signature_secret
+      Rails.application.credentials.secret_key_base
+    end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  layout 'user'
+  layout "user"
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -26,10 +26,8 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  protected
-  
   def after_sign_in_path_for(resource)
-    user_dashboard_index_path
+    user_dashboard_main_path
   end
 
   def after_sign_out_path_for(resource)

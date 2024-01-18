@@ -1,0 +1,67 @@
+<%= form_with(model: admin_dashboard_user, url: "/admin_dashboard/users/#{admin_dashboard_user.id}", class: "contents") do |form| %>
+  <% if admin_dashboard_user.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(admin_dashboard_user.errors.count, "error") %> prohibited this admin_dashboard_user from being saved:</h2>
+      <ul>
+        <% admin_dashboard_user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
+
+
+<div class="p-6 space-y-6">
+    <%= form_with(model: admin_dashboard_user, url: "/admin_dashboard/users/#{admin_dashboard_user.id}", class: "contents") do |form| %>
+        <% if admin_dashboard_user.errors.any? %>
+            <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+              <h2><%= pluralize(admin_dashboard_user.errors.count, "error") %> prohibited this admin_dashboard_user from being saved:</h2>
+              <ul>
+                <% admin_dashboard_user.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+        <div class="grid grid-cols-6 gap-6">
+            <div class="col-span-6 sm:col-span-3">
+                <%# <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="example@company.com" required> %>
+                <%= form.label :email, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+                <%= form.text_field :email, class: "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500", placeholder: "example@company.com", required: true %>
+            </div>
+            <div class="col-span-6 sm:col-span-3">
+                <label for="position" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position</label>
+                <input type="text" name="position" id="position" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. React developer" required>
+            </div>
+            <div class="col-span-6 sm:col-span-3">
+              <label for="position" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Position</label>
+                <input type="text" name="position" id="position" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g. React developer" required>
+            </div>
+            <%# <div class="col-span-6">
+                <label for="biography" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Biography</label>
+                <textarea id="biography" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="👨‍💻Full-stack web developer. Open-source contributor."></textarea>
+            </div> %>
+        </div> 
+      <!-- Modal footer -->
+      <div class="items-center p-6 border-t border-gray-200 rounded-b dark:border-gray-700">
+          <button class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="submit">Add user</button>
+      </div>
+  <% end %>
+</div>
