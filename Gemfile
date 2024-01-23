@@ -87,3 +87,5 @@ end
 gem "devise", "~> 4.9"
 gem "omniauth-github", "~> 2.0.0"
 gem "tailwindcss-rails", "~> 2.2"
+
+gem "pagy", "~> 6.4"

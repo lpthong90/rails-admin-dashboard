@@ -5,10 +5,12 @@ class AdminDashboard::UsersController < AdminsController
 
   # GET /admin_dashboard/users or /admin_dashboard/users.json
   def index
-    @admin_dashboard_users = User.all
-    @page_size = 20
-    @page = 1
-    @total_count = User.count
+    @pagy, @admin_dashboard_users = pagy_countless(User.all, items: 2)
+
+    respond_to do |format|
+      format.html # GET
+      format.turbo_stream # POST
+    end
   end
 
   # GET /admin_dashboard/users/1 or /admin_dashboard/users/1.json
@@ -26,17 +28,20 @@ class AdminDashboard::UsersController < AdminsController
 
   # POST /admin_dashboard/users or /admin_dashboard/users.json
   def create
-    puts "admin_dashboard_user_params #{admin_dashboard_user_params}"
-    @admin_dashboard_user = User.new(admin_dashboard_user_params)
+    if page_params
+      redirect_to admin_dashboard_users_path(page: page_params)
+    else
+      @admin_dashboard_user = User.new(admin_dashboard_user_params)
 
-    respond_to do |format|
-      if @admin_dashboard_user.save
-        format.html { redirect_to admin_dashboard_user_url(@admin_dashboard_user), notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @admin_dashboard_user }
-        # format.turbo_stream { render turbo_stream: turbo_stream.replace('modal', 'admin_dashboard/users/new', locals: { admin_dashboard_user: @admin_dashboard_user }) }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @admin_dashboard_user.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @admin_dashboard_user.save
+          format.html { redirect_to admin_dashboard_user_url(@admin_dashboard_user), notice: "User was successfully created." }
+          format.json { render :show, status: :created, location: @admin_dashboard_user }
+          # format.turbo_stream { render turbo_stream: turbo_stream.replace('modal', 'admin_dashboard/users/new', locals: { admin_dashboard_user: @admin_dashboard_user }) }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @admin_dashboard_user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
