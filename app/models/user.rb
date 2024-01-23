@@ -14,7 +14,7 @@ class User < ApplicationRecord
     def broadcast_later
       broadcast_replace_to(
         :users,
-        partial: 'admin_dashboard/users/index',
+        partial: "admin_dashboard/users/index",
         locals: { admin_dashboard_users: self }
       )
     end
