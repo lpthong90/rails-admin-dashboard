@@ -14,3 +14,5 @@ pin "@popperjs/core", to: "@popperjs--core.js" # @2.11.8
 pin "flowbite-app.bundle"
 pin "flowbit-app-theme"
 pin "tailwindcss-stimulus-components", to: "https://ga.jspm.io/npm:tailwindcss-stimulus-components@4.0.4/dist/tailwindcss-stimulus-components.module.js"
+pin "@rails/actioncable", to: "actioncable.esm.js"
+pin_all_from "app/javascript/channels", under: "channels"

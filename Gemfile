@@ -89,3 +89,5 @@ gem "omniauth-github", "~> 2.0.0"
 gem "tailwindcss-rails", "~> 2.2"
 
 gem "pagy", "~> 6.4"
+
+gem "redis", "~> 5.0"
