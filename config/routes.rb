@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :api_keys
   namespace :admin_dashboard do
     resources :api_keys
-    resources :users
+    resources :users do
+      member do
+        get "confirm_destroy"
+      end
+    end
     get "" => "main#index", as: :main
   end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AdminDashboard::UsersController < AdminsController
-  before_action :set_admin_dashboard_user, only: %i[ show edit update destroy ]
+  before_action :set_admin_dashboard_user, only: %i[ show edit update destroy confirm_destroy ]
 
   # GET /admin_dashboard/users or /admin_dashboard/users.json
   def index
@@ -33,6 +33,7 @@ class AdminDashboard::UsersController < AdminsController
       if @admin_dashboard_user.save
         format.html { redirect_to admin_dashboard_user_url(@admin_dashboard_user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @admin_dashboard_user }
+        # format.turbo_stream { render turbo_stream: turbo_stream.replace('modal', 'admin_dashboard/users/new', locals: { admin_dashboard_user: @admin_dashboard_user }) }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @admin_dashboard_user.errors, status: :unprocessable_entity }
@@ -51,6 +52,9 @@ class AdminDashboard::UsersController < AdminsController
         format.json { render json: @admin_dashboard_user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def confirm_destroy
   end
 
   # DELETE /admin_dashboard/users/1 or /admin_dashboard/users/1.json

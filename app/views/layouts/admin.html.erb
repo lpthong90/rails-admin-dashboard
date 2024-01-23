@@ -12,13 +12,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-50 dark:bg-gray-800">
+  <body class="bg-gray-50 dark:bg-gray-800 w-full">
     <% if current_admin_user.present? %> 
       <%= render "/admin_dashboard/partials/nav" %>
       <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
         <%= render "/admin_dashboard/partials/sidebar" %>
         <%= yield %>
       </div>
+      <%= turbo_frame_tag "modal" %>
     <% else %>
       <%= yield %>
     <% end %>
