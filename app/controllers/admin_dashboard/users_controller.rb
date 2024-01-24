@@ -5,7 +5,8 @@ class AdminDashboard::UsersController < AdminsController
 
   # GET /admin_dashboard/users or /admin_dashboard/users.json
   def index
-    @q = User.ransack(params[:q])
+    @q = User.ransack(params[:query])
+
     @pagy, @admin_dashboard_users = pagy(
       @q.result(distinct: true),
       items: 2
