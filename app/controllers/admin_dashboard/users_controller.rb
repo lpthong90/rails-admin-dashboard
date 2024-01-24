@@ -5,7 +5,8 @@ class AdminDashboard::UsersController < AdminsController
 
   # GET /admin_dashboard/users or /admin_dashboard/users.json
   def index
-    @pagy, @admin_dashboard_users = pagy_countless(User.all, items: 2)
+    # @pagy, @admin_dashboard_users = pagy_countless(User.all, items: 2)
+    @pagy, @admin_dashboard_users = pagy(User.all, items: 2)
 
     respond_to do |format|
       format.html # GET

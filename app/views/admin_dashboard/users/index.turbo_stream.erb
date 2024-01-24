@@ -1,70 +1,20 @@
 <%= turbo_stream.update "users_table" do %>
-    <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-      <thead class="bg-gray-100 dark:bg-gray-700">
-          <tr>
-              <th scope="col" class="p-4">
-                  <div class="flex items-center">
-                      <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="checkbox-all" class="sr-only">checkbox</label>
-                  </div>
-              </th>
-              <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                  Email
-              </th>
-              <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                  
-              </th>
-              <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                  
-              </th>
-              <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                  
-              </th>
-              <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                  
-              </th>
-              <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-              </th>
-              <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                  <%# Actions %>
-              </th>
-              <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                  <%# Actions %>
-              </th>
-          </tr>
-      </thead>
-      <tbody id="users" class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-          <%= render @admin_dashboard_users %>
-      </tbody>
-  </table>
+    <%= render "admin_dashboard/partials/table" do %>
+        <thead class="bg-gray-100 dark:bg-gray-700">
+            <%= render partial: "admin_dashboard/users/partials/table_head" %>
+        </thead>
+        <tbody id="users" class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+            <%= render @admin_dashboard_users %>
+        </tbody>
+    <% end %>
 <% end %>
 
 <%= turbo_stream.update "pagination" do %>
     <div class="flex items-center mb-4 sm:mb-0">
-        <% if @pagy.prev.present? %>
-          <%= link_to pagy_url_for(@pagy, @pagy.prev), data: { turbo_method: :post }, class: "inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" do %>
-            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-          <% end %>
-        <% end %>
-        <% if @pagy.next.present?  %>
-          <%= link_to pagy_url_for(@pagy, @pagy.next), data: { turbo_method: :post }, class: "inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" do %>
-            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-          <% end %>
-        <% end %>
-        <%# <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Showing <span class="font-semibold text-gray-900 dark:text-white"><%= (@page - 1) * @page_size + 1 -<%= [@page * @page_size, @total_count].min </span> of <span class="font-semibold text-gray-900 dark:text-white"><%= @total_count </span></span> %>
+        <%= render partial: "admin_dashboard/partials/pagination/arrow" %>
+        <%= render partial: "admin_dashboard/partials/pagination/info" %>
     </div>
     <div class="flex items-center space-x-3">
-        <% if @pagy.prev.present? %>
-            <%= link_to pagy_url_for(@pagy, @pagy.prev), data: {turbo_method: :post}, class: "inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" do %>
-                <svg class="w-5 h-5 mr-1 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                Previous
-            <% end %>
-        <% end %>
-        <% if @pagy.next.present?  %>
-            <%= link_to pagy_url_for(@pagy, @pagy.next), data: {turbo_method: :post}, class: "inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" do %>
-                Next
-                <svg class="w-5 h-5 ml-1 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-            <% end %>
-        <% end  %>
+        <%= render partial: "admin_dashboard/partials/pagination/button" %>
     </div>
 <% end %>
