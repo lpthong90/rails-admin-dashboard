@@ -9,4 +9,8 @@ class User < ApplicationRecord
   has_many :api_keys, foreign_key: :user_id, dependent: :destroy
 
   broadcasts_to -> (user) { :users_list }, partial: "admin_dashboard/users/user"
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["email"]
+  end
 end

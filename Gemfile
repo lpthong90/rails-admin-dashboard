@@ -91,3 +91,5 @@ gem "tailwindcss-rails", "~> 2.2"
 gem "pagy", "~> 6.4"
 
 gem "redis", "~> 5.0"
+
+gem "ransack", "~> 4.1"
