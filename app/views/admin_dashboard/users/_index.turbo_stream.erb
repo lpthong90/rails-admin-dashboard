@@ -1,4 +1,4 @@
-<%= turbo_stream.update "users-list" do %>
+<%= turbo_stream.update "users_table" do %>
     <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
       <thead class="bg-gray-100 dark:bg-gray-700">
           <tr>
@@ -33,7 +33,7 @@
               </th>
           </tr>
       </thead>
-      <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+      <tbody id="users" class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
           <%= render @admin_dashboard_users %>
       </tbody>
   </table>

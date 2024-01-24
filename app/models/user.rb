@@ -8,14 +8,5 @@ class User < ApplicationRecord
 
   has_many :api_keys, foreign_key: :user_id, dependent: :destroy
 
-  after_commit :broadcast_later
-
-  private
-    def broadcast_later
-      broadcast_replace_to(
-        :users,
-        partial: "admin_dashboard/users/index",
-        locals: { admin_dashboard_users: self }
-      )
-    end
+  broadcasts_to -> (user) { :users_list }, partial: "admin_dashboard/users/user"
 end
